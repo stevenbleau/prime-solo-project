@@ -20,6 +20,10 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+import CreateAccountPage from '../CreateAccountPage/CreateAccountPage';
+
+import Sandbox from '../Sandbox/Sandbox';
+
 import './App.css';
 
 function App() {
@@ -33,8 +37,25 @@ function App() {
 
   return (
     <Router>
+      
+      {/* SAND BOX */}
+        {/* <Route>
+            <Sandbox />
+        </Route> */}
+
+
+      {/* ACCOUNT CREATIONS */}
+
+      <Route>
+        <CreateAccountPage />
+      </Route>
+
+
+
+
+
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
