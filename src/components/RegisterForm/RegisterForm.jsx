@@ -27,11 +27,12 @@ function RegisterForm() {
     });
 
     // Sends user to create account page
-    history.push('/api/createAccountPage');
+    history.push('/createAccountPage');
 
   }; // end registerUser
 
   return (
+
     <form className="formPanel" onSubmit={registerUser}>
       <h2>Register User</h2>
       {errors.registrationMessage && (
@@ -69,7 +70,11 @@ function RegisterForm() {
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
+
+      {/* <button onClick={() => history.push('/createAccountPage')} className="button">Next</button> */}
+
     </form>
+    
   );
 }
 

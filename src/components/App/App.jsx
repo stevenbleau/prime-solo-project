@@ -44,16 +44,6 @@ function App() {
         </Route> */}
 
 
-      {/* ACCOUNT CREATIONS */}
-
-      <Route>
-        <CreateAccountPage />
-      </Route>
-
-
-
-
-
       <div>
         {/* <Nav /> */}
         <Switch>
@@ -115,6 +105,12 @@ function App() {
               // Otherwise, show the registration page
               <RegisterPage />
             }
+          </Route>
+
+
+{/* CREATE ACOUNT PAGE ROUTE */}
+          <Route exact path="/createAccountPage">
+            <CreateAccountPage/>
           </Route>
 
           <Route
