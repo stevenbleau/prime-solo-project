@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
 import { useSelector } from 'react-redux';
+import './NavBar.css';
 
-function Nav() {
+//import discover_icon from '../../media/discover_icon';
+
+function NavBar() {
   const user = useSelector((store) => store.user);
 
   return (
@@ -16,32 +18,42 @@ function Nav() {
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
+          <>
+                <Link className="navLink" to="/login">
+                    Login / Register
+                </Link>
+
+                <Link className="navLink" to="/about">
+                About
+                </Link>
+            </>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
             <Link className="navLink" to="/user">
-              Home
+              Discover
             </Link>
 
             <Link className="navLink" to="/info">
-              Info Page
+              Pledges
             </Link>
 
-            <LogOutButton className="navLink" />
+            <Link className="navLink" to="/info">
+              My Campaigns
+            </Link>
+
+            <Link className="navLink" to="/profile">
+              Profile
+            </Link>
+
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
       </div>
     </div>
   );
 }
 
-export default Nav;
+export default NavBar;

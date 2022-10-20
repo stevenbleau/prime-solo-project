@@ -9,6 +9,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
+import NavBar from '../NavBar/NavBar';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -21,6 +22,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import CreateAccountPage from '../CreateAccountPage/CreateAccountPage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import logo from '../../media/pigeon_logo.svg';
 
 import Sandbox from '../Sandbox/Sandbox';
 
@@ -37,6 +40,7 @@ function App() {
 
   return (
     <Router>
+
       
       {/* SAND BOX */}
         {/* <Route>
@@ -45,7 +49,14 @@ function App() {
 
 
       <div>
-        {/* <Nav /> */}
+
+        {/* LOGO */}
+          <center>
+            <br/>
+
+            <img src={logo} />
+          </center>
+
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -108,10 +119,29 @@ function App() {
           </Route>
 
 
+
+
+
+
           {/* CREATE ACOUNT PAGE ROUTE */}
-          <Route exact path="/createAccountPage">
-            <CreateAccountPage/>
-          </Route>
+            <Route exact path="/createAccountPage">
+              <CreateAccountPage/>
+            </Route>
+
+
+          {/* PROFILE PAGE ROUTE */}
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/profile"
+            >
+              <ProfilePage />
+            </ProtectedRoute>
+
+
+
+
+
 
           <Route
             exact
@@ -135,6 +165,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
+      <NavBar />
     </Router>
   );
 }
