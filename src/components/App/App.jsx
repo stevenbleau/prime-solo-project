@@ -25,6 +25,7 @@ import CreateAccountPage from '../CreateAccountPage/CreateAccountPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
 import MyCampaignsPage from '../MyCampaignsPage/MyCampaignsPage';
 import DiscoverPage from '../DiscoverPage/DiscoverPage';
+import PledgesPage from '../PledgesPage/PledgesPage';
 
 import logo from '../../media/pigeon_logo.svg';
 
@@ -150,14 +151,23 @@ function App() {
               <MyCampaignsPage />
             </ProtectedRoute>
 
-            {/* MY CAMPAIGNS PAGE ROUTE */}
-              <ProtectedRoute
+          {/* MY CAMPAIGNS PAGE ROUTE */}
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/pledges"
+            >
+              <PledgesPage />
+            </ProtectedRoute>
+
+            {/* DISCOVER PAGE ROUTE */}
+            <Route
               // logged in shows UserPage else shows LoginPage
               exact
               path="/discover"
             >
               <DiscoverPage />
-            </ProtectedRoute>
+            </Route>
 
 
 
