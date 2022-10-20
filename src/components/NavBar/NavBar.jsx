@@ -32,11 +32,11 @@ function NavBar() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/discover">
               Discover
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/pledges">
               Pledges
             </Link>
 
