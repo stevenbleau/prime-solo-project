@@ -40,7 +40,7 @@ function NavBar() {
               Pledges
             </Link>
 
-            <Link className="navLink" to="/info">
+            <Link className="navLink" to="/my/campaigns">
               My Campaigns
             </Link>
 

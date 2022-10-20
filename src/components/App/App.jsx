@@ -23,6 +23,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import CreateAccountPage from '../CreateAccountPage/CreateAccountPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import MyCampaignsPage from '../MyCampaignsPage/MyCampaignsPage';
 import logo from '../../media/pigeon_logo.svg';
 
 import Sandbox from '../Sandbox/Sandbox';
@@ -136,6 +137,15 @@ function App() {
               path="/profile"
             >
               <ProfilePage />
+            </ProtectedRoute>
+
+          {/* MY CAMPAIGNS PAGE ROUTE */}
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/my/campaigns"
+            >
+              <MyCampaignsPage />
             </ProtectedRoute>
 
 
