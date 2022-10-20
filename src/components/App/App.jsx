@@ -108,7 +108,7 @@ function App() {
           </Route>
 
 
-{/* CREATE ACOUNT PAGE ROUTE */}
+          {/* CREATE ACOUNT PAGE ROUTE */}
           <Route exact path="/createAccountPage">
             <CreateAccountPage/>
           </Route>
@@ -131,6 +131,7 @@ function App() {
           <Route>
             <h1>404</h1>
           </Route>
+          
         </Switch>
         <Footer />
       </div>
