@@ -12,7 +12,7 @@ function MyCampaignsPage() {
 
   const dispatch = useDispatch();
   const [campaignArray, setCampaignArray] = useState([]);
-  const array = [];
+
 
 
   const fetchCampaigns = () => {
@@ -44,7 +44,7 @@ function MyCampaignsPage() {
       <ul>
         {
           campaignArray.map(campaign => {
-            return <CampaignCard campaign={campaign}/>
+            return <CampaignCard campaign={campaign} key={campaign.id}/>
           })
         }
       </ul>

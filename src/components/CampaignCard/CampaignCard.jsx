@@ -14,7 +14,10 @@ import Typography from '@mui/material/Typography';
 
 function CampaignCard(campaign) {
 
-  
+
+  console.log('The CAMPAIGN data is: ', campaign);
+  console.log(campaign.campaign.title);
+
   const handleClick = event => { 
     console.log('div clicked', event.target);
   };
@@ -27,14 +30,14 @@ function CampaignCard(campaign) {
             component="img"
             alt="Donation Drive"
             height="140"
-            image="https://www.supportcaliforniahospital.org/image/ways-to-give/iStock-510150904.jpg"
+            image={campaign.campaign.image_url}
         />
         <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-            DME Donation Drive
+            {campaign.campaign.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-            Looking for DME donations for hospital
+            {campaign.campaign.description}
         </Typography>
         </CardContent>
         <CardActions>
