@@ -22,6 +22,27 @@ router.get('/', (req, res) => {
       })
 });
 
+
+/**
+ * GET route template
+ */
+ router.get('/details/:id', (req, res) => {
+    console.log('in campaign.router GET');
+    const query = `SELECT * FROM campaign`;
+    pool.query(query)
+      .then( result => {
+        //returns the first item in the array (which is an object)
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('ERROR in campaign.router GET', err);
+        res.sendStatus(500)
+      })
+});
+
+
+
+
 /**
  * POST route template
  */

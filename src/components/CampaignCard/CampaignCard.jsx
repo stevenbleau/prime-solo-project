@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from "axios";
+import { useHistory } from 'react-router-dom'; 
+
 
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -14,12 +16,14 @@ import Typography from '@mui/material/Typography';
 
 function CampaignCard(campaign) {
 
-
+  const history = useHistory();
   console.log('The CAMPAIGN data is: ', campaign);
   console.log(campaign.campaign.title);
 
   const handleClick = event => { 
     console.log('div clicked', event.target);
+    history.push('/details')
+    
   };
 
 

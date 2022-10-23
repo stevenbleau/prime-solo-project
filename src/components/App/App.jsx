@@ -26,6 +26,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import MyCampaignsPage from '../MyCampaignsPage/MyCampaignsPage';
 import DiscoverPage from '../DiscoverPage/DiscoverPage';
 import PledgesPage from '../PledgesPage/PledgesPage';
+import CampaignDetailsPage from '../CampaignDetailsPage/CampaignDetailsPage';
 
 
 
@@ -34,6 +35,7 @@ import logo from '../../media/pigeon_logo.svg';
 import Sandbox from '../Sandbox/Sandbox';
 
 import './App.css';
+import { Campaign } from '@mui/icons-material';
 
 function App() {
   const dispatch = useDispatch();
@@ -169,6 +171,15 @@ function App() {
               path="/discover"
             >
               <DiscoverPage />
+            </Route>
+
+            {/* DISCOVER PAGE ROUTE */}
+            <Route
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/details"
+            >
+              <CampaignDetailsPage />
             </Route>
 
 
