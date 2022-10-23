@@ -177,7 +177,7 @@ function App() {
             <Route
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/details"
+              path="/campaign/details/:id"
             >
               <CampaignDetailsPage />
             </Route>

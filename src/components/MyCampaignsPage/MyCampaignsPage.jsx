@@ -42,11 +42,9 @@ function MyCampaignsPage() {
       <h2>My Campaigns</h2>
       <button>Create Campaign</button>
       <ul>
-        {
-          campaignArray.map(campaign => {
+          {campaignArray.map(campaign => {
             return <CampaignCard campaign={campaign} key={campaign.id}/>
-          })
-        }
+          })}
       </ul>
     </div>
   );
@@ -54,3 +52,5 @@ function MyCampaignsPage() {
 
 // this allows us to use <App /> in index.js
 export default MyCampaignsPage;
+
+

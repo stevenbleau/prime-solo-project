@@ -23,22 +23,21 @@ router.get('/', (req, res) => {
 });
 
 
-/**
- * GET route template
- */
- router.get('/details/:id', (req, res) => {
-    console.log('in campaign.router GET');
-    const query = `SELECT * FROM campaign`;
-    pool.query(query)
+// GET CAMPAIGN DETAILS 
+router.get('/:id', (req, res) => {
+
+    const query = `SELECT * FROM campaign WHERE "id"=$1`;
+    pool.query(query, [req.params.id])
       .then( result => {
         //returns the first item in the array (which is an object)
-        res.send(result.rows);
+        res.send(result.rows[0]);
       })
       .catch(err => {
-        console.log('ERROR in campaign.router GET', err);
+        console.log('ERROR: Get Details', err);
         res.sendStatus(500)
       })
-});
+  
+  });
 
 
 

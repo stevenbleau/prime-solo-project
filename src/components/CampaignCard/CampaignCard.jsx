@@ -22,7 +22,7 @@ function CampaignCard(campaign) {
 
   const handleClick = event => { 
     console.log('div clicked', event.target);
-    history.push('/details')
+    history.push(`/campaign/details/${campaign.campaign.id}`);
     
   };
 
