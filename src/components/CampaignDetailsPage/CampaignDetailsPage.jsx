@@ -9,19 +9,37 @@ import { useParams } from 'react-router-dom';
 function CampaignDetailsPage() {
 
   const dispatch = useDispatch();
-  const [campaignArray, setCampaignArray] = useState([]);
+  // let [campaign, setCampaign] = useState([]);
+  const [itemList, setItemList] = useState([]);
   const user = useSelector(store => store.user)
+  const campaign = useSelector(store => store.campaign)
   const {id} = useParams();
 
 
 
-  const fetchCampaigns = () => {
+// GET REQUEST ORIGINALLY USED TO GET CAMPAIGN DETAILS BEFORE USING REDUCER
+  // const fetchCampaign = () => {
+  //   axios({
+  //       method: 'GET',
+  //       url: `/api/campaign/${id}`
+  //   }).then (response => {
+  //     console.log('the capaign response.data is ', response.data);
+  //     setCampaign(response.data);
+  //   }).catch (error => {
+  //     console.log('error in fetchCampaigns')
+  //     console.log(error);
+  //     alert('Something went wrong!')
+  //   })
+  // }
+
+  const fetchItems = () => {
     axios({
         method: 'GET',
-        url: `/api/campaign/${id}`
+        url: `/api/campaign/item/${id}`
     }).then (response => {
-      console.log('the response.data is ', response.data);
-      setCampaignArray(response.data);
+      console.log('the fetchItems response.data is ', response.data);
+      setItemList(response.data);
+      console.log('campaign details are', campaign.campaign.title);
     }).catch (error => {
       console.log('error in fetchCampaigns')
       console.log(error);
@@ -31,7 +49,8 @@ function CampaignDetailsPage() {
 
 
   useEffect(() => {
-    fetchCampaigns();
+    // fetchCampaign();
+    fetchItems();
   }, []);
 
 
@@ -41,19 +60,18 @@ function CampaignDetailsPage() {
       
 
 
-
-        {/* <img src={campaignArray[0].campaign_image_url} />
-        <h2>{campaignArray[0].title}</h2>
-        <h5>{campaignArray[0].location}</h5>
-        <h3>{campaignArray[0].description}</h3> */}
-
+        
+        <img src={campaign.campaign.campaign_image_url} />
+        <h2>{campaign.campaign.title}</h2>
+        <h5>{campaign.campaign.location}</h5>
+        <h3>{campaign.campaign.description}</h3>
 
       <ul>
-          {campaignArray.map(campaign => {
+          {itemList.map(item => {
             return (
-              <div key={campaign.item_id}>
-                <h5>{campaign.item_name} {campaign.item_quantity}</h5>
-                <h5>{campaign.item_description}</h5>
+              <div key={item.item_id}>
+                <h5>{item.item_name} {item.item_quantity}</h5>
+                <h5>{item.item_description}</h5>
                 <button>Pitch In</button>
               </div>
             );

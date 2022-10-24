@@ -16,12 +16,14 @@ import Typography from '@mui/material/Typography';
 
 function CampaignCard(campaign) {
 
+  const dispatch = useDispatch();
   const history = useHistory();
   console.log('The CAMPAIGN data is: ', campaign);
   console.log(campaign.campaign.title);
 
   const handleClick = event => { 
     console.log('div clicked', event.target);
+    dispatch({type: 'SET_CAMPAIGN', payload: campaign});
     history.push(`/campaign/details/${campaign.campaign.id}`);
     
   };

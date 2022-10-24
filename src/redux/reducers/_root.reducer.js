@@ -43,6 +43,13 @@ const photo = (state = '', action) => {
   return state;
 }
 
+const campaign = (state = [], action) => {
+  if (action.type === 'SET_CAMPAIGN') {
+    return action.payload
+  } 
+  return state;
+}
+
 
 
 // Lets make a bigger object for our store, with the objects from our reducers.
@@ -55,6 +62,7 @@ const rootReducer = combineReducers({
   location,
   bio,
   photo,
+  campaign,
 });
 
 export default rootReducer;
