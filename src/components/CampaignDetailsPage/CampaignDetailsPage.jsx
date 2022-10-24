@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from "axios";
 import UserPage from '../UserPage/UserPage';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 
 function CampaignDetailsPage() {
@@ -11,6 +11,7 @@ function CampaignDetailsPage() {
   let [campaignDetails, setCampaignDetails] = useState([]);
   const [itemList, setItemList] = useState([]);
   const {id} = useParams();
+  const history = useHistory();
 
   //ORIGINALLY CALLED TO TEST REDUCER
   // const campaign = useSelector(store => store.campaign)
@@ -53,6 +54,11 @@ function CampaignDetailsPage() {
     fetchItems();
   }, []);
 
+ const handleClick = event =>  {
+    console.log('pitch in button clicked', event.target.value);
+    history.push(`/create/pledge/${id}`)
+  };
+
 
 
   return (
@@ -64,7 +70,7 @@ function CampaignDetailsPage() {
             <div key={campaign.id}>
               <img src={campaign.campaign_image_url}></img>
               <h1>{campaign.title}</h1>
-              <h3>{campaign.description}</h3>
+              <h4>{campaign.description}</h4>
             </div>
           );
         })}
@@ -81,9 +87,9 @@ function CampaignDetailsPage() {
           {itemList.map(item => {
             return (
               <div key={item.item_id}>
-                <h5>{item.item_name} {item.pledge_count}/{item.item_quantity}</h5>
+                <h3>{item.item_name} {item.pledge_count}/{item.item_quantity}</h3>
                 <h5>{item.item_description}</h5>
-                <button>Pitch In</button>
+                <button value={item.item_id} onClick={handleClick}>Pitch In</button>
               </div>
             );
           })}

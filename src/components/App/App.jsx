@@ -27,6 +27,7 @@ import MyCampaignsPage from '../MyCampaignsPage/MyCampaignsPage';
 import DiscoverPage from '../DiscoverPage/DiscoverPage';
 import PledgesPage from '../PledgesPage/PledgesPage';
 import CampaignDetailsPage from '../CampaignDetailsPage/CampaignDetailsPage';
+import CreatePledge from '../CreatePledge/CreatePledge';
 
 
 
@@ -126,6 +127,8 @@ function App() {
             }
           </Route>
 
+          
+
 
 
 
@@ -183,6 +186,22 @@ function App() {
             </Route>
 
 
+            {/* CREATE PLEDGE ROUTE */}
+            <Route
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/create/pledge/:id"
+            >
+              <CreatePledge />
+            </Route>
+
+
+
+
+
+
+
+
 
 
           <Route
@@ -205,7 +224,7 @@ function App() {
           </Route>
           
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
       <NavBar />
     </Router>
