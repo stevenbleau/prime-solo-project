@@ -34,7 +34,7 @@ function CampaignCard(campaign) {
             component="img"
             alt="Donation Drive"
             height="140"
-            image={campaign.campaign.image_url}
+            image={campaign.campaign.campaign_image_url}
         />
         <CardContent>
         <Typography gutterBottom variant="h5" component="div">

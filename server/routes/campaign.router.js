@@ -26,11 +26,16 @@ router.get('/', (req, res) => {
 // GET CAMPAIGN DETAILS 
 router.get('/:id', (req, res) => {
 
-    const query = `SELECT * FROM campaign WHERE "id"=$1`;
+    const query = `SELECT * FROM "campaign"
+                    INNER JOIN "item"
+                    ON "item"."campaign_id" = "campaign"."id"
+                    INNER JOIN "user"
+                    ON "user"."id" = "campaign"."user_id"
+                    WHERE "campaign"."id" = $1;`;
     pool.query(query, [req.params.id])
       .then( result => {
         //returns the first item in the array (which is an object)
-        res.send(result.rows[0]);
+        res.send(result.rows);
       })
       .catch(err => {
         console.log('ERROR: Get Details', err);

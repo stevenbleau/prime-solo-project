@@ -22,7 +22,6 @@ function CampaignDetailsPage() {
     }).then (response => {
       console.log('the response.data is ', response.data);
       setCampaignArray(response.data);
-      console.log('the campaignArray is: ', campaignArray);
     }).catch (error => {
       console.log('error in fetchCampaigns')
       console.log(error);
@@ -40,12 +39,38 @@ function CampaignDetailsPage() {
   return (
     <div className="container">
       
-      <img src={campaignArray.image_url} />
-      <h2>{campaignArray.title}</h2>
-      <h5>{campaignArray.location}</h5>
-      <h3>{campaignArray.description}</h3>
-      
 
+
+
+        {/* <img src={campaignArray[0].campaign_image_url} />
+        <h2>{campaignArray[0].title}</h2>
+        <h5>{campaignArray[0].location}</h5>
+        <h3>{campaignArray[0].description}</h3> */}
+
+
+      <ul>
+          {campaignArray.map(campaign => {
+            return (
+              <div key={campaign.item_id}>
+                <h5>{campaign.item_name} {campaign.item_quantity}</h5>
+                <h5>{campaign.item_description}</h5>
+                <button>Pitch In</button>
+              </div>
+            );
+          })}
+      </ul>
+
+      {/* <ul>
+        {campaignArray.map(campaign => {
+          return 
+          <div>
+            <h5>{campaign.item_name} {campaign.item_quantity}</h5>
+            <h5>{campaign.item_description}</h5>
+            <button>Pitch In</button>
+          </div>    
+        })}
+      </ul> */}
+      
     </div>
   );
 }
