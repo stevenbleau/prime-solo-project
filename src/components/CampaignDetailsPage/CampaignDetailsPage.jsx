@@ -71,6 +71,8 @@ function CampaignDetailsPage() {
               <img src={campaign.campaign_image_url}></img>
               <h1>{campaign.title}</h1>
               <h4>{campaign.description}</h4>
+              <h5>{campaign.location}</h5>
+              <br/>
             </div>
           );
         })}

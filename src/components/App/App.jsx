@@ -28,6 +28,7 @@ import DiscoverPage from '../DiscoverPage/DiscoverPage';
 import PledgesPage from '../PledgesPage/PledgesPage';
 import CampaignDetailsPage from '../CampaignDetailsPage/CampaignDetailsPage';
 import CreatePledge from '../CreatePledge/CreatePledge';
+import PledgeCard from '../PledgeCard/PledgeCard';
 
 
 
@@ -162,7 +163,7 @@ function App() {
             <ProtectedRoute
               // logged in shows UserPage else shows LoginPage
               exact
-              path="/pledges"
+              path="/pledges/"
             >
               <PledgesPage />
             </ProtectedRoute>
