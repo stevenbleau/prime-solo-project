@@ -91,7 +91,7 @@ function CampaignDetailsPage() {
               <div key={item.item_id}>
                 <h3>{item.item_name} {item.pledge_count}/{item.item_quantity}</h3>
                 <h5>{item.item_description}</h5>
-                <button value={item.item_id} onClick={handleClick}>Pitch In</button>
+                <button value={item.item_id} onClick={() => history.push({ pathname:`/create/pledge/${item.item_id}`, state: {item_id: item.item_id, campaign_id: item.campaign_id}})}>Pitch In</button>
               </div>
             );
           })}
