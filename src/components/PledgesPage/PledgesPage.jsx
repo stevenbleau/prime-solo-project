@@ -36,7 +36,7 @@ function PledgesPage() {
       <h2>My Pledges</h2>
       <ul>
           {pledgeList.map(pledge => {
-            return <PledgeCard pledge={pledge}/>
+            return <PledgeCard pledge={pledge} key={pledge.id}/>
           })}
       </ul>    </div>
   );

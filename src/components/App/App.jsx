@@ -29,6 +29,7 @@ import PledgesPage from '../PledgesPage/PledgesPage';
 import CampaignDetailsPage from '../CampaignDetailsPage/CampaignDetailsPage';
 import CreatePledge from '../CreatePledge/CreatePledge';
 import PledgeCard from '../PledgeCard/PledgeCard';
+import PledgeDetailsPage from '../PledgeDetailsPage/PledgeDetailsPage';
 
 
 
@@ -59,6 +60,7 @@ function App() {
 
 
       <div>
+      {/* <NavBar /> */}
 
         {/* LOGO */}
           <center>
@@ -111,6 +113,20 @@ function App() {
               :
               // Otherwise, show the login page
               <LoginPage />
+            }
+          </Route>
+
+          <Route
+            exact
+            path="/registration"
+          >
+            {user.id ?
+              // If the user is already logged in, 
+              // redirect them to the /user page
+              <Redirect to="/user" />
+              :
+              // Otherwise, show the registration page
+              <RegisterPage />
             }
           </Route>
 
@@ -196,6 +212,15 @@ function App() {
               <CreatePledge />
             </Route>
 
+
+            {/* CREATE PLEDGE ROUTE */}
+            <Route
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/pledge/details/:id"
+            >
+              <PledgeDetailsPage />
+            </Route>
 
 
 

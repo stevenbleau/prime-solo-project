@@ -23,37 +23,38 @@ function PledgeCard(pledge) {
 
 
   console.log('The PLEDGE data is: ', pledge);
+  console.log('the pledge ID is: ', pledge.pledge_id);
 
   const handleClick = event => { 
     console.log('div clicked', event.target);
-    // dispatch({type: 'SET_CAMPAIGN', payload: campaign});
-    // history.push(`/campaign/details/${campaign.campaign.id}`);
+    dispatch({type: 'SET_CAMPAIGN', payload: pledge.pledge.campaign_id});
+    history.push(`/pledge/details/${pledge.pledge.pledge_id}`);
   };
 
 
   return (
 
-    <div className="container" onClick={handleClick} key={pledge.id}>
-    <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-            component="img"
-            alt="Donation Drive"
-            height="140"
-            image={pledge.pledge.pledge_image_url}
-        />
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-            {pledge.pledge.pledge_description}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-            {pledge.pledge.pledge_message}
-        </Typography>
-        </CardContent>
-        <CardActions>
-        {/* <Button size="small">Share</Button> */}
-        {/* <Button size="small">Learn More</Button> */}
-        </CardActions>
-    </Card>
+    <div className="container" onClick={handleClick} key={pledge.pledge.pledge_id}>
+      <Card sx={{ maxWidth: 345 }}>
+          <CardMedia
+              component="img"
+              alt="Donation Drive"
+              height="140"
+              image={pledge.pledge.pledge_image_url}
+          />
+          <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+              {pledge.pledge.pledge_description}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+              {pledge.pledge.pledge_message}
+          </Typography>
+          </CardContent>
+          <CardActions>
+          {/* <Button size="small">Share</Button> */}
+          {/* <Button size="small">Learn More</Button> */}
+          </CardActions>
+      </Card>
     </div>
 
 
