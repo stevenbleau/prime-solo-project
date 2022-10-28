@@ -41,7 +41,7 @@ function CreateCampaign() {
             campaign_image_url: campaignImage,
             user_id: userId,
             location: userLocation,
-            create_campaign_id: createCampaignId,
+            create_campaign_id: createCampaignId.createCampaignId,
           }
         }).then(response =>{
           console.log('New campaign created!');
