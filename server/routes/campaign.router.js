@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 
-// GET CAMPAIGN DETAILS 
+// GET CAMPAIGN DETAILS baed on campaign.id
 router.get('/:id', (req, res) => {
 
     const query = `SELECT * FROM "campaign"
@@ -39,13 +39,11 @@ router.get('/:id', (req, res) => {
   
   });
 
-  // GET CAMPAIGN DETAILS 
+  // GET CAMPAIGN DETAILS based on user.id
 router.get('/user/:id', (req, res) => {
 
   const query = `SELECT * FROM "campaign"
-                  JOIN "user"
-                  ON "user"."id" = "campaign"."user_id"
-                  WHERE "user"."id" = $1;`;
+                  WHERE "user_id" = $1;`;
   pool.query(query, [req.params.id])
     .then( result => {
       console.log('the user campaigns are: ', result.rows)
