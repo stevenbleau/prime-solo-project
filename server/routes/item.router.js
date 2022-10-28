@@ -108,21 +108,6 @@ router.get('/user/:id', (req, res) => {
     });
 });
 
-/**
- * POST New Item
- */
- router.post('/item', (req, res) => {
-  console.log('POST req.body', req.body);
-  let queryText = 'INSERT INTO "item" ("item_name", "item_description", "item_quantity", "campaign_id") VALUES ($1, $2, $3, $4);'
-  pool.query(queryText, [req.body.item_name, req.body.item_description, req.body.item_quantity, req.body.campaign_id])
-  .then((result) => {
-      res.sendStatus(200);
-  }).catch((err) => {
-      console.log(err);
-      res.sendStatus(500);
-  });
-});
-
 
 
 module.exports = router;

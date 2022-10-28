@@ -10,14 +10,43 @@ function CreateItem() {
 
     const history = useHistory()
     const location = useLocation();
+    const [campaignDetails, setCampaignDetails] = useState([]);
   
             //pulls unique id from pass from "useHistory()"" on previous page using "useLocation()"
             // const createCampaignId = location.state.createCampaignId;
 
-    const createCampaignId = useParams()
+    const {createCampaignId} = useParams()
+
+    const [itemName, setItemName] = useState('');
+    const [itemDescription, setItemDescription] = useState('');
+    const [itemQuantity, setItemQuantity] = useState(0);
+
+
+
 
     console.log('createCampaignId is: ', createCampaignId)
 
+
+
+    const fetchCampaign = () => {
+        axios({
+            method: 'GET',
+            url: `/api/campaign/create/${createCampaignId}`
+        }).then (response => {
+          console.log('the response.data is ', response.data);
+          setCampaignDetails(response.data);
+        //   console.log('the campaign details are: ', campaignDetails);
+        }).catch (error => {
+          console.log('error in fetchCampaigns')
+          console.log(error);
+          alert('Something went wrong!')
+        })
+      }
+
+
+      useEffect(() => {
+        fetchCampaign();
+      }, []);
 
 
 
@@ -33,47 +62,51 @@ function CreateItem() {
   
 
 
+  const addCampaign = event =>  {
 
-//   const addCampaign = event =>  {
+    axios({
+          method: 'POST',
+          url: '/api/campaign/item',
+          data:{
+            item_name: itemName,
+            item_description: itemDescription,
+            item_quantity: itemQuantity,
+            campaign_id: campaignDetails.id,
+          }
+        }).then(response =>{
+          console.log('New Item created!');
+        }).catch(error => {
+          console.log(error);
+          alert('Something went wrong!');
+        })
 
-//     axios({
-//           method: 'POST',
-//           url: '/api/campaign',
-//           data:{
-//             campaign_title: campaignTitle,
-//             campaign_description: campaignDescription,
-//             campaign_image_url: campaignImage,
-//             user_id: userId,
-//             location: userLocation,
-//           }
-//         }).then(response =>{
-//           console.log('New campaign created!');
-//         }).catch(error => {
-//           console.log(error);
-//           alert('Something went wrong!');
-//         })
-
-//     // pushes back to campaign page
-//     // history.push(`/my/campaigns`);
-//   };
+    // pushes back to campaign page
+    // history.push(`/my/campaigns`);
+  };
 
   return (
     <div className="container">
-      <h2>Create Campaign Page</h2>
 
-        {/* <form onSubmit={addCampaign}>
-        <label htmlFor="campaign-title-input">Title:</label>
-        <input id="campaign-description-input" onChange={e => setCampaignTitle(e.target.value)} />
+        <img src={campaignDetails.campaign_image_url}></img>
+        <h2>Title: {campaignDetails.title}</h2>
+        <h3>Description: {campaignDetails.description}</h3>
+
+      <h2>Add Item:</h2>
+
+
+        <form onSubmit={addCampaign}>
+        <label htmlFor="item-name-input">Item Name:</label>
+        <input id="item-name-input" onChange={e => setItemName(e.target.value)} />
         <br/>
-        <label htmlFor="campaign-description-input">Description:</label>
-        <input id="campaign-description-input" onChange={e => setCampaignDescription(e.target.value)} />
+        <label htmlFor="item-description-input">Item Description:</label>
+        <input id="item-description-input" onChange={e => setItemDescription(e.target.value)} />
         <br/>
-        <label htmlFor="campaign-image-input">Image url:</label>
-        <input id="campaign-image-input" onChange={e => setCampaignImage(e.target.value)} />
+        <label htmlFor="item-quantity-input">Item Quantity:</label>
+        <input id="item-quantity-input" onChange={e => setItemQuantity(e.target.value)} />
         <br/>
 
         <button type="submit">Next</button>
-        </form> */}
+        </form>
 
     </div>
   );
