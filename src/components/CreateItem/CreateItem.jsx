@@ -8,51 +8,60 @@ import axios from 'axios';
 
 function CreateItem() {
 
-  const history = useHistory()
-
-
-
-  const user = useSelector(store => store.user)
+    const history = useHistory()
+    const location = useLocation();
   
-  const userId = user.id;
-  const userLocation = user.location;
+            //pulls unique id from pass from "useHistory()"" on previous page using "useLocation()"
+            // const createCampaignId = location.state.createCampaignId;
+
+    const createCampaignId = useParams()
+
+    console.log('createCampaignId is: ', createCampaignId)
 
 
-  const [itemName, setItemName] = useState('');
-  const [ItemDescription, setItemDescription] = useState('');
-  const [ItemQuantity, setItemQuantity] = useState('');
+
+
+//   const user = useSelector(store => store.user)
+  
+//   const userId = user.id;
+//   const userLocation = user.location;
+
+
+//   const [itemName, setItemName] = useState('');
+//   const [ItemDescription, setItemDescription] = useState('');
+//   const [ItemQuantity, setItemQuantity] = useState('');
   
 
 
 
-  const addCampaign = event =>  {
+//   const addCampaign = event =>  {
 
-    axios({
-          method: 'POST',
-          url: '/api/campaign',
-          data:{
-            campaign_title: campaignTitle,
-            campaign_description: campaignDescription,
-            campaign_image_url: campaignImage,
-            user_id: userId,
-            location: userLocation,
-          }
-        }).then(response =>{
-          console.log('New campaign created!');
-        }).catch(error => {
-          console.log(error);
-          alert('Something went wrong!');
-        })
+//     axios({
+//           method: 'POST',
+//           url: '/api/campaign',
+//           data:{
+//             campaign_title: campaignTitle,
+//             campaign_description: campaignDescription,
+//             campaign_image_url: campaignImage,
+//             user_id: userId,
+//             location: userLocation,
+//           }
+//         }).then(response =>{
+//           console.log('New campaign created!');
+//         }).catch(error => {
+//           console.log(error);
+//           alert('Something went wrong!');
+//         })
 
-    // pushes back to campaign page
-    // history.push(`/my/campaigns`);
-  };
+//     // pushes back to campaign page
+//     // history.push(`/my/campaigns`);
+//   };
 
   return (
     <div className="container">
       <h2>Create Campaign Page</h2>
 
-        <form onSubmit={addCampaign}>
+        {/* <form onSubmit={addCampaign}>
         <label htmlFor="campaign-title-input">Title:</label>
         <input id="campaign-description-input" onChange={e => setCampaignTitle(e.target.value)} />
         <br/>
@@ -64,7 +73,7 @@ function CreateItem() {
         <br/>
 
         <button type="submit">Next</button>
-        </form>
+        </form> */}
 
     </div>
   );

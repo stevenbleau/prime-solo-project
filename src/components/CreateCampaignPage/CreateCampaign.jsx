@@ -11,8 +11,10 @@ function CreateCampaign() {
   const history = useHistory()
   const location = useLocation();
 
-  //pulls unique id from pass from "useHistory()"" on previous page using "useLocation()"
-  const createCampaignId = location.state.createCampaignId;
+  // //pulls unique id from pass from "useHistory()"" on previous page using "useLocation()"
+  // const createCampaignId = location.state.createCampaignId;
+
+  const createCampaignId = useParams();
   console.log('createCampaignId is: ', createCampaignId)
 
 
@@ -48,8 +50,8 @@ function CreateCampaign() {
           alert('Something went wrong!');
         })
 
-    // pushes back to campaign page
-    // history.push(`/my/campaigns`);
+    // pushes to create items page
+    history.push({pathname:`/create/campaign/items/${createCampaignId.createCampaignId}`, state: {createCampaignId: createCampaignId}});
   };
 
  
