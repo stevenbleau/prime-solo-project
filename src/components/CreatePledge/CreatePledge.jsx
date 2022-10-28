@@ -11,8 +11,12 @@ function CreatePledge() {
   const history = useHistory()
   const location = useLocation();
 
+  //MUST PASS IN THESE VALUES FROM ANOTHER PAGE
+  //grabs state data from CampaignDetailsPage history.push
   const itemId = location.state.item_id;
   const campaignId = location.state.campaign_id;
+  const itemName = location.state.item_name;
+
   const user = useSelector(store => store.user)
   const [pledgeDescription, setPledgeDescription] = useState('');
   const [pledgeQuantity, setPledgeQuantity] = useState(0);
@@ -53,7 +57,7 @@ function CreatePledge() {
   return (
     <div className="container">
       <h2>Create Pledge Page</h2>
-
+      <h3>Item: {itemName}</h3>
         <form onSubmit={addPledge}>
         <label htmlFor="pledge-description-input">Description:</label>
         <input id="pledge-description-input" onChange={e => setPledgeDescription(e.target.value)} />
@@ -63,6 +67,9 @@ function CreatePledge() {
         <br/>
         <label htmlFor="pledge-message-input">Message:</label>
         <input id="pledge-message-input" onChange={e => setPledgeMessage(e.target.value)} />
+        <br/>
+        {/* Displays pasted image url */}
+        <img src={pledgeImage}></img>
         <br/>
         <label htmlFor="pledge-image-input">Image url:</label>
         <input id="pledge-image-input" onChange={e => setPledgeImage(e.target.value)} />
@@ -76,46 +83,3 @@ function CreatePledge() {
 
 export default CreatePledge;
 
-
-
-
-// const addPerson = (evt) => {
-//   evt.preventDefault();
-//   console.log(`The person is ${famousPersonName} and they're famous for ${famousPersonRole}`);
-  
-//   // TODO: create POST request to add this new person to the database
-//   axios({
-//     method: 'POST',
-//     url: '/people',
-//     data:{
-//       name: famousPersonName,
-//       role: famousPersonRole,
-//     }
-//   }).then(response =>{
-//     fetchPeople();
-//   }).catch(error => {
-//     console.log(error);
-//     alert('Something went wrong!');
-//   })
-//   // HINT: the server is expecting a person object 
-//   //       with a `name` and a `role` property
-
-// }
-
-//   return (
-//     <section className="new-person-section">
-//       <form onSubmit={addPerson}>
-//         <label htmlFor="name-input">Name:</label>
-//         <input id="name-input" onChange={e => setPersonName(e.target.value)} />
-//         <label htmlFor="role-input">Famous for:</label>
-//         <input id="role-input" onChange={e => setPersonRole(e.target.value)} />
-//         <button type="submit">Done</button>
-//       </form>
-//       <ul>
-//         {famousPeopleArray.map((people) => {
-//           return <li>"{people.name}"" is famous for "{people.role}"</li>
-//         })}
-//       </ul>
-//     </section>
-//   );
-// }

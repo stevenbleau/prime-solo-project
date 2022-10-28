@@ -30,6 +30,7 @@ import CampaignDetailsPage from '../CampaignDetailsPage/CampaignDetailsPage';
 import CreatePledge from '../CreatePledge/CreatePledge';
 import PledgeCard from '../PledgeCard/PledgeCard';
 import PledgeDetailsPage from '../PledgeDetailsPage/PledgeDetailsPage';
+import CreateCampaign from '../CreateCampaignPage/CreateCampaign';
 
 
 
@@ -221,6 +222,16 @@ function App() {
             >
               <PledgeDetailsPage />
             </Route>
+
+              {/* CREATE PLEDGE ROUTE */}
+              <Route
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/create/campaign"
+            >
+              <CreateCampaign />
+            </Route>
+
 
 
 

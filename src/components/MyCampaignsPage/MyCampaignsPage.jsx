@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import axios from "axios";
 import CampaignCard from '../CampaignCard/CampaignCard';
+import { useParams, useHistory } from 'react-router-dom';
+
 
 
 
@@ -11,6 +13,8 @@ import CampaignCard from '../CampaignCard/CampaignCard';
 function MyCampaignsPage() {
 
   const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector(store => store.user)
   const [campaignArray, setCampaignArray] = useState([]);
 
 
@@ -18,7 +22,7 @@ function MyCampaignsPage() {
   const fetchCampaigns = () => {
     axios({
         method: 'GET',
-        url: '/api/campaign'
+        url: `/api/campaign/user/${user.id}`
     }).then (response => {
       console.log('the response.data is ', response.data);
       setCampaignArray(response.data);
@@ -40,7 +44,7 @@ function MyCampaignsPage() {
     <div className="container">
       
       <h2>My Campaigns</h2>
-      <button>Create Campaign</button>
+      <button onClick={() => history.push('/create/campaign')}>Create Campaign</button>
       <ul>
           {campaignArray.map(campaign => {
             return <CampaignCard campaign={campaign} key={campaign.id}/>
