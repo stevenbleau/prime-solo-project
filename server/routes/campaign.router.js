@@ -78,8 +78,8 @@ router.get('/user/:id', (req, res) => {
  */
  router.post('/', (req, res) => {
     console.log('POST req.body', req.body);
-    let queryText = 'INSERT INTO "campaign" ("title", "description", "campaign_image_url", "location", "user_id") VALUES ($1, $2, $3, $4, $5);'
-    pool.query(queryText, [req.body.campaign_title, req.body.campaign_description, req.body.campaign_image_url, req.body.location, req.body.user_id, ])
+    let queryText = 'INSERT INTO "campaign" ("title", "description", "campaign_image_url", "location", "user_id","create_campaign_id") VALUES ($1, $2, $3, $4, $5, $6);'
+    pool.query(queryText, [req.body.campaign_title, req.body.campaign_description, req.body.campaign_image_url, req.body.location, req.body.user_id, req.body.create_campaign_id])
     .then((result) => {
         res.sendStatus(200);
     }).catch((err) => {

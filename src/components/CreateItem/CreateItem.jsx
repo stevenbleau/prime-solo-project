@@ -17,6 +17,7 @@ function CreateItem() {
   const userId = user.id;
   const userLocation = user.location;
 
+
   const [itemName, setItemName] = useState('');
   const [ItemDescription, setItemDescription] = useState('');
   const [ItemQuantity, setItemQuantity] = useState('');

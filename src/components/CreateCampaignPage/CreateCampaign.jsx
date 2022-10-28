@@ -9,7 +9,11 @@ import axios from 'axios';
 function CreateCampaign() {
 
   const history = useHistory()
+  const location = useLocation();
 
+  //pulls unique id from pass from "useHistory()"" on previous page using "useLocation()"
+  const createCampaignId = location.state.createCampaignId;
+  console.log('createCampaignId is: ', createCampaignId)
 
 
   const user = useSelector(store => store.user)
@@ -35,6 +39,7 @@ function CreateCampaign() {
             campaign_image_url: campaignImage,
             user_id: userId,
             location: userLocation,
+            create_campaign_id: createCampaignId,
           }
         }).then(response =>{
           console.log('New campaign created!');
