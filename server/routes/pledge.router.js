@@ -60,4 +60,35 @@ router.get('/user/:id', (req, res) => {
     });
 });
 
+
+// UPDATE ITEM QUANTITY COUNT
+router.put('/accept', (req, res) => {
+  console.log('PUT req.body', req.body);
+  let queryText = `UPDATE "item" SET "pledge_count" = "pledge_count" + $1 
+                    WHERE "item_id" = $2;`
+  pool.query(queryText, [req.body.pledge_count, req.body.item_id])
+  .then((result) => {
+      res.sendStatus(200);
+  }).catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+  });
+});
+
+// router.put('/:id', (req, res) =>{
+//   console.log('Adding to Item Quantity');
+//   const songId = req.params.id;
+//   const queryText =  `UPDATE "songs" SET "votes" = "votes" + 1
+//                       WHERE "id" = $1;`;
+//   pool.query(queryText, [songId])
+//       .then((results)=>{
+//           res.sendStatus(200);
+//       }).catch((error)=>{
+//           res.sendStatus(500);
+//       })
+// });
+
+
+router.put('/')
+
 module.exports = router;

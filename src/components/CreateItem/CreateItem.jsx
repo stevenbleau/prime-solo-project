@@ -62,7 +62,7 @@ function CreateItem() {
   
 
 
-  const addCampaign = event =>  {
+  const addItem = event =>  {
 
     axios({
           method: 'POST',
@@ -81,7 +81,7 @@ function CreateItem() {
         })
 
     // pushes back to campaign page
-    // history.push(`/my/campaigns`);
+    history.push(`/my/campaigns`);
   };
 
   return (
@@ -94,7 +94,7 @@ function CreateItem() {
       <h2>Add Item:</h2>
 
 
-        <form onSubmit={addCampaign}>
+        <form onSubmit={addItem}>
         <label htmlFor="item-name-input">Item Name:</label>
         <input id="item-name-input" onChange={e => setItemName(e.target.value)} />
         <br/>
@@ -105,7 +105,7 @@ function CreateItem() {
         <input id="item-quantity-input" onChange={e => setItemQuantity(e.target.value)} />
         <br/>
 
-        <button type="submit">Next</button>
+        <button type="submit">Submit</button>
         </form>
 
     </div>

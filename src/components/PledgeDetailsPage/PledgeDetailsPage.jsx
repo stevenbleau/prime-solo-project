@@ -13,6 +13,8 @@ function PledgeDetailsPage() {
   const {id} = useParams();
   const history = useHistory();
   const campaignId = useSelector(store => store.campaign)
+  const user = useSelector(store => store.user)
+
 
 
   //ORIGINALLY CALLED TO TEST REDUCER
@@ -55,10 +57,27 @@ function PledgeDetailsPage() {
     fetchCampaign();
   }, []);
 
- const handleClick = event =>  {
-    console.log('pitch in button clicked', event.target.value);
+ const acceptPledge = event =>  {
+    console.log('"accept donation" button clicked', event.target.value);
+    console.log('pledge.pledge_count = ', pledge[0].pledge_count);
+
+    axios({
+      method: 'PUT',
+      url: '/api/pledge/accept',
+      data:{
+        pledge_count: pledge[0].pledge_quantity,
+        item_id: pledge[0].item_id,
+      }
+    }).then(response =>{
+      console.log('Pledge Accepted!');
+    }).catch(error => {
+      console.log(error);
+      alert('Something went wrong!');
+    })
     // history.push(`/create/pledge/${id}`)
   };
+
+  
 
 
 
@@ -93,6 +112,11 @@ function PledgeDetailsPage() {
                 <h2>{pledge.pledge_description}</h2>
                 <h4>Quantity: {pledge.pledge_quantity}</h4>
                 <p>{pledge.pledge_message}</p>
+
+                {pledge.user_id === user.id &&
+                  <button onClick={acceptPledge}>Accept Donation</button>
+                }
+
               </div>
             );
           })}
