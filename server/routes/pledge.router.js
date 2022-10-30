@@ -2,10 +2,8 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
-// GET CAMPAIGN DETAILS 
+
+// GET ALL PLEDGES CREATED BY USER
 router.get('/user/:id', (req, res) => {
 
     const query = `SELECT * FROM "pledge"
@@ -20,6 +18,23 @@ router.get('/user/:id', (req, res) => {
       })
   
   });
+
+  // GET ALL PLEDGES Contributed to campaign
+router.get('/campaign/:id', (req, res) => {
+
+  const query = `SELECT * FROM "pledge"
+                  WHERE "pledge"."campaign_id" = $1;`;
+  pool.query(query, [req.params.id])
+    .then( result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get Details', err);
+      res.sendStatus(500)
+    })
+
+});
+
 
 
 

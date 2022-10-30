@@ -38,7 +38,8 @@ function PledgesPage() {
           {pledgeList.map(pledge => {
             return <PledgeCard pledge={pledge} key={pledge.id}/>
           })}
-      </ul>    </div>
+      </ul> 
+    </div>
   );
 }
 

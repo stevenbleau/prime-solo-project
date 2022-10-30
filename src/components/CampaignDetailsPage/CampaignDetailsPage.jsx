@@ -4,12 +4,14 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from "axios";
 import UserPage from '../UserPage/UserPage';
 import { useParams, useHistory } from 'react-router-dom';
+import PledgeCard from '../PledgeCard/PledgeCard';
 
 
 function CampaignDetailsPage() {
 
   let [campaignDetails, setCampaignDetails] = useState([]);
   const [itemList, setItemList] = useState([]);
+  const [pledgeList, setPledgeList] = useState([]);
   const {id} = useParams();
   const history = useHistory();
 
@@ -49,9 +51,27 @@ function CampaignDetailsPage() {
   }
 
 
+  const fetchPledges = () => {
+    axios({
+        method: 'GET',
+        url: `/api/pledge/campaign/${id}`
+    }).then (response => {
+      console.log('the PLEDGE response.data is ', response.data);
+      setPledgeList(response.data);
+    }).catch (error => {
+      console.log('error in fetchPledges')
+      console.log(error);
+      alert('Something went wrong!')
+    })
+  }
+
+
+
+
   useEffect(() => {
     fetchCampaign();
     fetchItems();
+    fetchPledges();
   }, []);
 
  const handleClick = event =>  {
@@ -96,6 +116,13 @@ function CampaignDetailsPage() {
             );
           })}
       </ul>
+
+      <h2>Pledges</h2>
+      <ul>
+          {pledgeList.map(pledge => {
+            return <PledgeCard pledge={pledge} key={pledge.id}/>
+          })}
+      </ul> 
       
     </div>
   );

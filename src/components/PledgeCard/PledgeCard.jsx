@@ -23,7 +23,7 @@ function PledgeCard(pledge) {
 
 
   console.log('The PLEDGE data is: ', pledge);
-  console.log('the pledge ID is: ', pledge.pledge_id);
+  console.log('the pledge ID is: ', pledge.pledge.pledge_id);
 
   const handleClick = event => { 
     console.log('div clicked', event.target);
