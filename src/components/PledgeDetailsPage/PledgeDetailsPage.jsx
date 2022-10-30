@@ -14,6 +14,7 @@ function PledgeDetailsPage() {
   const history = useHistory();
   const campaignId = useSelector(store => store.campaign)
   const user = useSelector(store => store.user)
+  const [pledgeCount, setPledgeCount] = useState();
 
 
 
@@ -45,6 +46,8 @@ function PledgeDetailsPage() {
     }).then (response => {
       console.log('the PLEDGE response.data is ', response.data);
       setPledge(response.data);
+      console.log('the PLEDGE count is ', response.data[0].pledge_count);
+      setPledgeCount(response.data.pledge_count);
     }).catch (error => {
       console.log('error in fetchPledges')
       console.log(error);
@@ -70,11 +73,15 @@ function PledgeDetailsPage() {
       }
     }).then(response =>{
       console.log('Pledge Accepted!');
+      //get updated pledge count value
+      fetchPledges();
     }).catch(error => {
       console.log(error);
       alert('Something went wrong!');
     })
-    // history.push(`/create/pledge/${id}`)
+
+    // window.location.reload();
+    // history.push(`/pledge/details/${id}`)
   };
 
   
