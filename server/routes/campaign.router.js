@@ -39,6 +39,22 @@ router.get('/:id', (req, res) => {
   
   });
 
+  // GET CAMPAIGN DETAILS based on campaign.id
+router.delete('/delete/:id', (req, res) => {
+
+  const query = `DELETE FROM "campaign" WHERE "id" = $1;`;
+  pool.query(query, [req.params.id])
+  .then( result => {
+    res.send('campaign deleted');
+  })
+    .catch(err => {
+      console.log('ERROR: Delete campaign', err);
+      res.sendStatus(500)
+    })
+
+});
+
+
   // GET CAMPAIGN DETAILS based on user.id
 router.get('/user/:id', (req, res) => {
 

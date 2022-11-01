@@ -121,14 +121,18 @@ function PledgeDetailsPage() {
                 <p>{pledge.pledge_message}</p>
 
                 {pledge.user_id === user.id &&
-                  <button onClick={acceptPledge}>Accept Donation</button>
+                  <button className="btn" onClick={acceptPledge}>Accept Donation</button>
                 }
 
               </div>
             );
           })}
       </div>
-      
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

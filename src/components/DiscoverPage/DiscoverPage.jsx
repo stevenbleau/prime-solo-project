@@ -37,6 +37,8 @@ function DiscoverPage() {
 
   return (
     <div className="container">
+
+      <h4>Hello {user.first_name}, let's help someone today.</h4>
       
       <h2>Campaigns in {user.location}</h2>
       <ul>

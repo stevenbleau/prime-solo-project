@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
 import './NavBar.css';
+import DiscoverIcon from '../../media/discover_icon.svg';
+import { useParams, useHistory } from 'react-router-dom';
+
 
 //import discover_icon from '../../media/discover_icon';
 
 function NavBar() {
   const user = useSelector((store) => store.user);
+  const history = useHistory();
+
 
   return (
     <div className="nav">
@@ -32,6 +37,9 @@ function NavBar() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
+
+            {/* <img src={DiscoverIcon} className="navLink" onClick={() => history.push(`/discover`)}></img> */}
+
             <Link className="navLink" to="/discover">
               Discover
             </Link>

@@ -14,6 +14,9 @@ function CampaignDetailsPage() {
   const [pledgeList, setPledgeList] = useState([]);
   const {id} = useParams();
   const history = useHistory();
+  const user = useSelector(store => store.user)
+  const [campaignUserId, setCampaignUserId] = useState(0);
+
 
   //ORIGINALLY CALLED TO TEST REDUCER
   // const campaign = useSelector(store => store.campaign)
@@ -26,7 +29,9 @@ function CampaignDetailsPage() {
         url: `/api/campaign/${id}`
     }).then (response => {
       console.log('the campaign response.data is ', response.data);
+      console.log('the campaigns user.id is', response.data[0].user_id);
       setCampaignDetails(response.data);
+      setCampaignUserId(response.data[0].user_id)
     }).catch (error => {
       console.log('error in fetchCampaigns')
       console.log(error);
@@ -74,6 +79,22 @@ function CampaignDetailsPage() {
     fetchPledges();
   }, []);
 
+  const deleteCampaign = () => {
+    axios({
+        method: 'DELETE',
+        url: `/api/campaign/delete/${id}`
+    }).then (response => {
+      console.log(response);
+      history.push('/my/campaigns');
+    }).catch (error => {
+      console.log('error in deleteCampaign')
+      console.log(error);
+      alert('Something went wrong!')
+    })
+  }
+
+
+
  const handleClick = event =>  {
     console.log('pitch in button clicked', event.target.value);
     history.push(`/create/pledge/${id}`)
@@ -111,7 +132,7 @@ function CampaignDetailsPage() {
               <div key={item.item_id}>
                 <h3>{item.item_name} {item.pledge_count}/{item.item_quantity}</h3>
                 <h5>{item.item_description}</h5>
-                <button value={item.item_id} onClick={() => history.push({ pathname:`/create/pledge/${item.item_id}`, state: {item_id: item.item_id, item_name: item.item_name, campaign_id: item.campaign_id}})}>Pitch In</button>
+                <button className="btn" value={item.item_id} onClick={() => history.push({ pathname:`/create/pledge/${item.item_id}`, state: {item_id: item.item_id, item_name: item.item_name, campaign_id: item.campaign_id}})}>Pitch In</button>
               </div>
             );
           })}
@@ -123,7 +144,15 @@ function CampaignDetailsPage() {
             return <PledgeCard pledge={pledge} key={pledge.id}/>
           })}
       </ul> 
-      
+
+      {campaignUserId === user.id &&
+        <button className="delete-btn" onClick={deleteCampaign}>Delete Campaign</button>
+      }
+            <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

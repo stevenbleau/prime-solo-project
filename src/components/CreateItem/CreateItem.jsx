@@ -35,6 +35,8 @@ function CreateItem() {
         }).then (response => {
           console.log('the response.data is ', response.data);
           setCampaignDetails(response.data);
+
+
         //   console.log('the campaign details are: ', campaignDetails);
         }).catch (error => {
           console.log('error in fetchCampaigns')

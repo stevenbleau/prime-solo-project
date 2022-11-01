@@ -86,8 +86,8 @@ function CreateCampaign() {
         <label htmlFor="campaign-image-input">Image url:</label>
         <input id="campaign-image-input" onChange={e => setCampaignImage(e.target.value)} />
         <br/>
-
-        <button type="submit" >Next</button>
+        <br/>
+        <button className="btn" type="submit" >Next</button>
         </form>
 
     </div>

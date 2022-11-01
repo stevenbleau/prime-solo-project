@@ -1,21 +1,16 @@
 .nav {
     /* flex box layout */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   
-    margin: 0 0 0px;
+    margin: 0 0 30px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
 
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.259);
-
-    position: fixed; /* Set the navbar to fixed position */
-    bottom: 0; /* Position the navbar at the top of the page */
-     width: 100%; /* Full width */
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.04);
 
   }
-  
   
   .nav a {
     text-decoration: none;
@@ -45,13 +40,10 @@
     border: none;
     cursor: pointer;
     outline: 0;
-    font-weight: 550;
-
   }
   
   .navLink:hover {
-    background-color: rgb(255, 255, 255);
-    color:rgb(1, 182, 175);
-
+    background-color: rgb(1, 182, 175);
+    color:rgb(255, 255, 255);
   }
   

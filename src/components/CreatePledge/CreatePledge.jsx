@@ -74,7 +74,7 @@ function CreatePledge() {
         <label htmlFor="pledge-image-input">Image url:</label>
         <input id="pledge-image-input" onChange={e => setPledgeImage(e.target.value)} />
         <br/>
-        <button type="submit">Submit</button>
+        <button className="btn" type="submit">Submit</button>
         </form>
 
     </div>

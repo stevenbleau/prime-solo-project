@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import NavBar from '../NavBar/NavBar';
+import BottomNav from '../BottomNav/BottomNav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -66,10 +67,10 @@ function App() {
 
         {/* LOGO */}
           <center>
-            <br/>
-
-            <img src={logo} />
+              <Nav/>
           </center>
+
+
 
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -273,6 +274,10 @@ function App() {
         </Switch>
         {/* <Footer /> */}
       </div>
+
+      {/* <BottomNav/>         */}
+
+
       <NavBar />
     </Router>
   );

@@ -31,7 +31,12 @@ function CampaignCard(campaign) {
 
   return (
     <div className="container" onClick={handleClick}>
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{
+       maxWidth: 345,
+       color: "rgb(1, 182, 175)"
+
+       }} >
+      
         <CardMedia
             component="img"
             alt="Donation Drive"

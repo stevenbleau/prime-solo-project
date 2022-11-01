@@ -21,9 +21,15 @@ function ProfilePage() {
       <h3>Location: {user.location}</h3>
       <h3>Bio: {user.bio}</h3>
 
-
+      <br/>
       <LogOutButton className="btn" />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
+  
   );
 }
 
