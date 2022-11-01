@@ -58,7 +58,7 @@ function CreatePledge() {
     <div className="container">
       <h2>Create Pledge Page</h2>
       <h3>Item: {itemName}</h3>
-        <form onSubmit={addPledge}>
+        <form onSubmit={addPledge} className="formPanel">
         <label htmlFor="pledge-description-input">Description:</label>
         <input id="pledge-description-input" onChange={e => setPledgeDescription(e.target.value)} />
         <br/>
@@ -74,8 +74,14 @@ function CreatePledge() {
         <label htmlFor="pledge-image-input">Image url:</label>
         <input id="pledge-image-input" onChange={e => setPledgeImage(e.target.value)} />
         <br/>
+        <br/>
         <button className="btn" type="submit">Submit</button>
+
         </form>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
 
     </div>
   );

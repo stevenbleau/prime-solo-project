@@ -35,8 +35,12 @@ function PledgeCard(pledge) {
   return (
 
     <div className="container" onClick={handleClick} key={pledge.pledge.pledge_id}>
-      <Card sx={{ maxWidth: 345, color: "rgb(1, 182, 175)"
-}}>
+      <Card sx={{ 
+        maxWidth: 345, 
+        color: "rgb(1, 182, 175)",
+        borderRadius: "20px",
+        boxShadow: "0 1px 20px rgb(0, 0, 0, 0.1)"
+      }}>
           <CardMedia
               component="img"
               alt="Donation Drive"

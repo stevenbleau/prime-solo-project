@@ -55,6 +55,11 @@ function MyCampaignsPage() {
             return <CampaignCard campaign={campaign} key={campaign.id}/>
           })}
       </ul>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

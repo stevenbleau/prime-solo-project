@@ -96,7 +96,7 @@ function CreateItem() {
       <h2>Add Item:</h2>
 
 
-        <form onSubmit={addItem}>
+        <form onSubmit={addItem} className="formPanel">
         <label htmlFor="item-name-input">Item Name:</label>
         <input id="item-name-input" onChange={e => setItemName(e.target.value)} />
         <br/>

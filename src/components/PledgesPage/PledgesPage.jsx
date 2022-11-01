@@ -39,6 +39,11 @@ function PledgesPage() {
             return <PledgeCard pledge={pledge} key={pledge.id}/>
           })}
       </ul> 
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

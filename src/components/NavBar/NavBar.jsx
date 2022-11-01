@@ -25,7 +25,7 @@ function NavBar() {
           // If there's no user, show login/registration links
           <>
                 <Link className="navLink" to="/login">
-                    Login / Register
+                    Login
                 </Link>
 
                 <Link className="navLink" to="/about">

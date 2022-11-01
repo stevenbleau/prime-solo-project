@@ -48,6 +48,11 @@ function DiscoverPage() {
           })
         }
       </ul>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </div>
   );
 }

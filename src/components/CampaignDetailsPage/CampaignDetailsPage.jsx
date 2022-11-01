@@ -5,6 +5,7 @@ import axios from "axios";
 import UserPage from '../UserPage/UserPage';
 import { useParams, useHistory } from 'react-router-dom';
 import PledgeCard from '../PledgeCard/PledgeCard';
+import ProgressBar from '../ProgressBar/ProgressBar';
 
 
 function CampaignDetailsPage() {
@@ -16,6 +17,7 @@ function CampaignDetailsPage() {
   const history = useHistory();
   const user = useSelector(store => store.user)
   const [campaignUserId, setCampaignUserId] = useState(0);
+
 
 
   //ORIGINALLY CALLED TO TEST REDUCER
@@ -103,7 +105,7 @@ function CampaignDetailsPage() {
 
 
   return (
-    <div className="container">
+    <div className="detailPage">
       
       <ul>
         {campaignDetails.map(campaign => {
@@ -132,6 +134,7 @@ function CampaignDetailsPage() {
               <div key={item.item_id}>
                 <h3>{item.item_name} {item.pledge_count}/{item.item_quantity}</h3>
                 <h5>{item.item_description}</h5>
+                <ProgressBar  bgcolor={"#00695c"} completed={(item.pledge_count/item.item_quantity)*100} />
                 <button className="btn" value={item.item_id} onClick={() => history.push({ pathname:`/create/pledge/${item.item_id}`, state: {item_id: item.item_id, item_name: item.item_name, campaign_id: item.campaign_id}})}>Pitch In</button>
               </div>
             );

@@ -140,6 +140,8 @@ function RegisterForm() {
           />
         </label>
       </div>
+      <br/>
+
 
       
 
@@ -149,7 +151,7 @@ function RegisterForm() {
         <input className="btn" type="submit" name="submit" value="Register" />
       </div>
 
-
+        
     </form>
     
   );

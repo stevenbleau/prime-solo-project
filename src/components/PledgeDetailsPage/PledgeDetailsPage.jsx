@@ -89,7 +89,7 @@ function PledgeDetailsPage() {
 
 
   return (
-    <div className="container">
+    <div className="detailPage">
       
       <div>
         {pledge.map(pledge => {

@@ -74,7 +74,7 @@ function CreateCampaign() {
     <div className="container">
       <h2>Create Campaign Page</h2>
 
-        <form onSubmit={addCampaign}>
+        <form onSubmit={addCampaign} className="formPanel">
         <label htmlFor="campaign-title-input">Title:</label>
         <input id="campaign-description-input" onChange={e => setCampaignTitle(e.target.value)} />
         <br/>
