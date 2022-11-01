@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from "axios";
 import UserPage from '../UserPage/UserPage';
 import { useParams, useHistory } from 'react-router-dom';
+import ProgressBar from '../ProgressBar/ProgressBar';
+
 
 
 function PledgeDetailsPage() {
@@ -98,6 +100,7 @@ function PledgeDetailsPage() {
               {/* <img src={pledge.campaign_image_url}></img> */}
               <h1>{pledge.title}</h1>
               <h3>{pledge.item_name} {pledge.pledge_count}/{pledge.item_quantity}</h3>
+              <ProgressBar  bgcolor={"#00695c"} completed={(pledge.pledge_count/pledge.item_quantity)*100} />
               <br/>
             </div>
           );

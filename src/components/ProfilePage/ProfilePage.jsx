@@ -10,7 +10,7 @@ function ProfilePage() {
 
 
   return (
-    <div className="formPanel">
+    <div className="detailPage">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
 
