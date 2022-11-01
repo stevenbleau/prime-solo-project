@@ -55,9 +55,10 @@ function CreatePledge() {
   };
 
   return (
-    <div className="container">
+    <div className="detailPage">
       <h2>Create Pledge Page</h2>
       <h3>Item: {itemName}</h3>
+      
         <form onSubmit={addPledge} className="formPanel">
         <label htmlFor="pledge-description-input">Description:</label>
         <input id="pledge-description-input" onChange={e => setPledgeDescription(e.target.value)} />

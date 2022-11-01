@@ -36,23 +36,25 @@ function DiscoverPage() {
 
 
   return (
-    <div className="container">
-
-      <h4>Hello {user.first_name}, let's help someone today.</h4>
-      
-      <h2>Campaigns in {user.location}</h2>
-      <ul>
-        {
-          campaignArray.map(campaign => {
-            return <CampaignCard campaign={campaign} key={campaign.id}/>
-          })
-        }
-      </ul>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+    <div id='discover-page'>
+      <img className="bannerImg" src="https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjIxMWJhdGNoMTEta2liLTMwNC1jaGFyaXR5XzIuanBn.jpg?s=W1GJFDeuEvSSIB1z_lCs4JP7ptGo_cecHQGi5OM7DaA"></img>
+      <div className="container">
+        <h4>Hello {user.first_name}, let's help someone today.</h4>
+        <span> <input id="search-input"/> <button id="search-button">Search</button> </span>
+        <h2>Campaigns in {user.location}</h2>
+        <ul>
+          {
+            campaignArray.map(campaign => {
+              return <CampaignCard campaign={campaign} key={campaign.id}/>
+            })
+          }
+        </ul>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div>
     </div>
   );
 }
