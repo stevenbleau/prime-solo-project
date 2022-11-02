@@ -50,11 +50,11 @@ function MyCampaignsPage() {
       
       <h2>My Campaigns</h2>
       <button className="btn" onClick={() => history.push({pathname: `/create/campaign/${createCampaignId}`, state: {createCampaignId: createCampaignId}})}>Create Campaign</button>
-      <ul>
+      <div>
           {campaignArray.map(campaign => {
             return <CampaignCard campaign={campaign} key={campaign.id}/>
           })}
-      </ul>
+      </div>
       <br/>
       <br/>
       <br/>

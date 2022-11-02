@@ -34,11 +34,11 @@ function PledgesPage() {
   return (
     <div className="container">
       <h2>My Pledges</h2>
-      <ul>
+      <div>
           {pledgeList.map(pledge => {
             return <PledgeCard pledge={pledge} key={pledge.id}/>
           })}
-      </ul> 
+      </div> 
       <br/>
       <br/>
       <br/>

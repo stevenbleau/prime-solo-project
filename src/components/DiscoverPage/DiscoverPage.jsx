@@ -42,13 +42,13 @@ function DiscoverPage() {
         <h4>Hello {user.first_name}, let's help someone today.</h4>
         <span> <input id="search-input"/> <button id="search-button">Search</button> </span>
         <h2>Campaigns in {user.location}</h2>
-        <ul>
+        <div>
           {
             campaignArray.map(campaign => {
               return <CampaignCard campaign={campaign} key={campaign.id}/>
             })
           }
-        </ul>
+        </div>
         <br/>
         <br/>
         <br/>
