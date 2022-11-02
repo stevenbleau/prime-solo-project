@@ -30,8 +30,8 @@ function CampaignCard(campaign) {
 
 
   return (
-    <div className="container" onClick={handleClick}>
-    <Card sx={{
+    <div className="container" >
+    <Card className="card" onClick={handleClick} sx={{
        maxWidth: 345,
        color: "rgb(1, 182, 175)",
        borderRadius: "20px",

@@ -34,8 +34,8 @@ function PledgeCard(pledge) {
 
   return (
 
-    <div className="container" onClick={handleClick} key={pledge.pledge.pledge_id}>
-      <Card sx={{ 
+    <div className="container"  key={pledge.pledge.pledge_id}>
+      <Card className="card" onClick={handleClick} sx={{ 
         maxWidth: 345, 
         color: "rgb(1, 182, 175)",
         borderRadius: "20px",
